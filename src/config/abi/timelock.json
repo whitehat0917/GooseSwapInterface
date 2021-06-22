@@ -1,0 +1,444 @@
+[
+    {
+        "type": "constructor",
+        "stateMutability": "nonpayable",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "admin_",
+                "internalType": "address"
+            },
+            {
+                "type": "uint256",
+                "name": "delay_",
+                "internalType": "uint256"
+            }
+        ]
+    },
+    {
+        "type": "event",
+        "name": "CancelTransaction",
+        "inputs": [
+            {
+                "type": "bytes32",
+                "name": "txHash",
+                "internalType": "bytes32",
+                "indexed": true
+            },
+            {
+                "type": "address",
+                "name": "target",
+                "internalType": "address",
+                "indexed": true
+            },
+            {
+                "type": "uint256",
+                "name": "value",
+                "internalType": "uint256",
+                "indexed": false
+            },
+            {
+                "type": "string",
+                "name": "signature",
+                "internalType": "string",
+                "indexed": false
+            },
+            {
+                "type": "bytes",
+                "name": "data",
+                "internalType": "bytes",
+                "indexed": false
+            },
+            {
+                "type": "uint256",
+                "name": "eta",
+                "internalType": "uint256",
+                "indexed": false
+            }
+        ],
+        "anonymous": false
+    },
+    {
+        "type": "event",
+        "name": "ExecuteTransaction",
+        "inputs": [
+            {
+                "type": "bytes32",
+                "name": "txHash",
+                "internalType": "bytes32",
+                "indexed": true
+            },
+            {
+                "type": "address",
+                "name": "target",
+                "internalType": "address",
+                "indexed": true
+            },
+            {
+                "type": "uint256",
+                "name": "value",
+                "internalType": "uint256",
+                "indexed": false
+            },
+            {
+                "type": "string",
+                "name": "signature",
+                "internalType": "string",
+                "indexed": false
+            },
+            {
+                "type": "bytes",
+                "name": "data",
+                "internalType": "bytes",
+                "indexed": false
+            },
+            {
+                "type": "uint256",
+                "name": "eta",
+                "internalType": "uint256",
+                "indexed": false
+            }
+        ],
+        "anonymous": false
+    },
+    {
+        "type": "event",
+        "name": "NewAdmin",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "newAdmin",
+                "internalType": "address",
+                "indexed": true
+            }
+        ],
+        "anonymous": false
+    },
+    {
+        "type": "event",
+        "name": "NewDelay",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "newDelay",
+                "internalType": "uint256",
+                "indexed": true
+            }
+        ],
+        "anonymous": false
+    },
+    {
+        "type": "event",
+        "name": "NewPendingAdmin",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "newPendingAdmin",
+                "internalType": "address",
+                "indexed": true
+            }
+        ],
+        "anonymous": false
+    },
+    {
+        "type": "event",
+        "name": "QueueTransaction",
+        "inputs": [
+            {
+                "type": "bytes32",
+                "name": "txHash",
+                "internalType": "bytes32",
+                "indexed": true
+            },
+            {
+                "type": "address",
+                "name": "target",
+                "internalType": "address",
+                "indexed": true
+            },
+            {
+                "type": "uint256",
+                "name": "value",
+                "internalType": "uint256",
+                "indexed": false
+            },
+            {
+                "type": "string",
+                "name": "signature",
+                "internalType": "string",
+                "indexed": false
+            },
+            {
+                "type": "bytes",
+                "name": "data",
+                "internalType": "bytes",
+                "indexed": false
+            },
+            {
+                "type": "uint256",
+                "name": "eta",
+                "internalType": "uint256",
+                "indexed": false
+            }
+        ],
+        "anonymous": false
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": "",
+                "internalType": "uint256"
+            }
+        ],
+        "name": "GRACE_PERIOD",
+        "inputs": []
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": "",
+                "internalType": "uint256"
+            }
+        ],
+        "name": "MAXIMUM_DELAY",
+        "inputs": []
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": "",
+                "internalType": "uint256"
+            }
+        ],
+        "name": "MINIMUM_DELAY",
+        "inputs": []
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "outputs": [],
+        "name": "acceptAdmin",
+        "inputs": []
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "outputs": [
+            {
+                "type": "address",
+                "name": "",
+                "internalType": "address"
+            }
+        ],
+        "name": "admin",
+        "inputs": []
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "outputs": [
+            {
+                "type": "bool",
+                "name": "",
+                "internalType": "bool"
+            }
+        ],
+        "name": "admin_initialized",
+        "inputs": []
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "outputs": [],
+        "name": "cancelTransaction",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "target",
+                "internalType": "address"
+            },
+            {
+                "type": "uint256",
+                "name": "value",
+                "internalType": "uint256"
+            },
+            {
+                "type": "string",
+                "name": "signature",
+                "internalType": "string"
+            },
+            {
+                "type": "bytes",
+                "name": "data",
+                "internalType": "bytes"
+            },
+            {
+                "type": "uint256",
+                "name": "eta",
+                "internalType": "uint256"
+            }
+        ]
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "outputs": [
+            {
+                "type": "uint256",
+                "name": "",
+                "internalType": "uint256"
+            }
+        ],
+        "name": "delay",
+        "inputs": []
+    },
+    {
+        "type": "function",
+        "stateMutability": "payable",
+        "outputs": [
+            {
+                "type": "bytes",
+                "name": "",
+                "internalType": "bytes"
+            }
+        ],
+        "name": "executeTransaction",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "target",
+                "internalType": "address"
+            },
+            {
+                "type": "uint256",
+                "name": "value",
+                "internalType": "uint256"
+            },
+            {
+                "type": "string",
+                "name": "signature",
+                "internalType": "string"
+            },
+            {
+                "type": "bytes",
+                "name": "data",
+                "internalType": "bytes"
+            },
+            {
+                "type": "uint256",
+                "name": "eta",
+                "internalType": "uint256"
+            }
+        ]
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "outputs": [
+            {
+                "type": "address",
+                "name": "",
+                "internalType": "address"
+            }
+        ],
+        "name": "pendingAdmin",
+        "inputs": []
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "outputs": [
+            {
+                "type": "bytes32",
+                "name": "",
+                "internalType": "bytes32"
+            }
+        ],
+        "name": "queueTransaction",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "target",
+                "internalType": "address"
+            },
+            {
+                "type": "uint256",
+                "name": "value",
+                "internalType": "uint256"
+            },
+            {
+                "type": "string",
+                "name": "signature",
+                "internalType": "string"
+            },
+            {
+                "type": "bytes",
+                "name": "data",
+                "internalType": "bytes"
+            },
+            {
+                "type": "uint256",
+                "name": "eta",
+                "internalType": "uint256"
+            }
+        ]
+    },
+    {
+        "type": "function",
+        "stateMutability": "view",
+        "outputs": [
+            {
+                "type": "bool",
+                "name": "",
+                "internalType": "bool"
+            }
+        ],
+        "name": "queuedTransactions",
+        "inputs": [
+            {
+                "type": "bytes32",
+                "name": "",
+                "internalType": "bytes32"
+            }
+        ]
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "outputs": [],
+        "name": "setDelay",
+        "inputs": [
+            {
+                "type": "uint256",
+                "name": "delay_",
+                "internalType": "uint256"
+            }
+        ]
+    },
+    {
+        "type": "function",
+        "stateMutability": "nonpayable",
+        "outputs": [],
+        "name": "setPendingAdmin",
+        "inputs": [
+            {
+                "type": "address",
+                "name": "pendingAdmin_",
+                "internalType": "address"
+            }
+        ]
+    },
+    {
+        "type": "receive",
+        "stateMutability": "payable"
+    }
+]
